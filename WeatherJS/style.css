@@ -1,0 +1,126 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    font-family: "Poppins";
+}
+
+
+.weather{
+    border-radius: 10px;
+    margin-top: 50px;
+    padding: 20px 10px;
+    width: 400px;
+    border: 1px solid black;
+    background-color: rgb(45, 45, 45); 
+}
+
+.weather .searchbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.weather .searchbar #search{
+    padding: 10px 20px;
+    border-radius: 500px;
+    border: 0.5px solid;
+    width: 300px;
+    height: 20px;
+}
+
+.weather .searchbar input{
+    font-family: "Poppins";
+}
+
+.weather .searchbar span{
+    color: rgb(45, 45, 45);
+    background-color: aliceblue;
+    padding: 10px;
+    border-radius: 500px;
+    cursor: pointer;
+}
+.weather .weather_content{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+
+.weather .weather_content .city{
+    min-width: 200px;
+    max-width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+}
+
+.weather .weather_content .city #cloud{
+    color: aliceblue;
+    font-size: 80px;
+}
+
+.weather .weather_content .city #cel{
+    color: aliceblue;
+    font-size: 20px;
+}
+
+.weather .weather_content .city #cityname{
+    color: rgb(45, 45, 45);
+    font-size: 20px;
+    padding: 10px;
+    background-color: aliceblue;
+    max-width: 185px;
+    min-width: 185px;
+    text-align: center;
+    border-radius: 50px;
+    font-family: "Poppins";
+    font-weight: 500;
+}
+
+.weather .weather_content .others{
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.weather .weather_content .others .air{
+    background-color: aliceblue;
+    color: rgb(45, 45, 45);
+    padding: 10px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+
+.weather .weather_content .others .speed{
+    background-color: aliceblue;
+    color: rgb(45, 45, 45);
+    padding: 10px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
