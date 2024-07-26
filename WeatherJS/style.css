@@ -11,16 +11,20 @@ body{
     align-items: center;
     align-content: center;
     font-family: "Poppins";
+    background-image: url(weather.jpeg);
+    background-position: center;
+
 }
 
 
 .weather{
+
     border-radius: 10px;
-    margin-top: 50px;
+    margin-top: 200px;
     padding: 20px 10px;
     width: 400px;
-    border: 1px solid black;
-    background-color: rgb(45, 45, 45); 
+    border: 1px solid rgb(45, 45, 45,0.5);
+    background-color: rgb(45, 45, 45,0.5); 
 }
 
 .weather .searchbar{
@@ -51,22 +55,15 @@ body{
     cursor: pointer;
 }
 .weather .weather_content{
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    align-items: baseline;
+    display: grid;
+    padding: 10px;
+    gap: 10px;
 }
 
 
 .weather .weather_content .city{
-    min-width: 200px;
-    max-width: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    display: grid;
     gap: 10px;
-    padding: 15px;
 }
 
 .weather .weather_content .city #cloud{
@@ -81,30 +78,26 @@ body{
 
 .weather .weather_content .city #cityname{
     color: rgb(45, 45, 45);
-    font-size: 20px;
-    padding: 10px;
+    font-size: 16px;
+    padding: 5px 15px;
     background-color: aliceblue;
-    max-width: 185px;
-    min-width: 185px;
     text-align: center;
-    border-radius: 50px;
+    border-radius: 5px;
     font-family: "Poppins";
     font-weight: 500;
 }
 
 .weather .weather_content .others{
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: 50% 50%;
 }
 
 .weather .weather_content .others .air{
+    width: 85%;
     background-color: aliceblue;
     color: rgb(45, 45, 45);
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     display: grid;
     grid-template-columns: 30% 70%;
     justify-content: center;
@@ -117,10 +110,29 @@ body{
     background-color: aliceblue;
     color: rgb(45, 45, 45);
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     display: grid;
     grid-template-columns: 30% 70%;
     justify-content: center;
     align-items: center;
     font-size: 16px;
+}
+
+
+#recentSearches{
+    display: flex;
+    justify-self: start;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+    column-gap: 10px;
+    
+}
+
+#recentSearches span{
+  background-color: aliceblue;
+  padding: 2px 12px;
+  border-radius: 5px;
+  font-size: 12px;
 }
