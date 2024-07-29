@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes Taking</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+    <section>
+        <div class="header">
+            <span id="search_btn" class="material-symbols-outlined">
+                note
+            </span>
+            <span class="title">Notes Taking for Reminders</span>
+        </div>
+        <div class="createNotes">
+            <textarea id="note" placeholder="Take Notes Here...."></textarea>
+            <br>
+            <button id="createNote">Create Note +</button>
+        </div>
+        <div class="notesHistory">
+            <span id="search_btn" class="material-symbols-outlined">
+                history
+            </span>
+            <Span class="noteTitle">
+                Your Notes
+            </Span>
+        </div>
+        
+        <div id="displayContainer">
+
+        </div>
+    </section>
+    <script>
+        const noteInput = document.getElementById("note");
+        const createBtn = document.getElementById("createNote");
+        const display = document.getElementById("displayContainer");
+
+
+        createBtn.addEventListener("click", () => {
+            if(noteInput.value==""){
+                alert("Write Something first");
+            }
+            else{
+            const newNoteContainer = document.createElement("div");
+            newNoteContainer.className = "newNoteContainer";
+            newNoteContainer.addEventListener("click",function(e){
+                if(e.target.textContent === "delete"){
+                const conf = confirm("Do you want to delete");
+                if(conf){
+                    e.target.parentElement.remove();
+                    updateStorage();
+                }
+                else{
+
+                }
+                }
+            })
+
+            const newNote = document.createElement("span");
+            newNote.className = "note";
+            newNote.textContent = noteInput.value;
+            newNote.setAttribute("contenteditable","true")
+
+            const noteDelete = document.createElement("span");
+            noteDelete.textContent = "delete"
+            noteDelete.setAttribute("class","material-symbols-outlined");
+            noteDelete.setAttribute("id","noteDelete");
+
+            const noteDate = document.createElement("span");
+            noteDate.className = "noteDate";
+            const date = new Date();
+            const options = {  year: 'numeric', 
+            month: 'short', 
+            day: 'numeric', 
+            hour: 'numeric', 
+            minute: 'numeric', 
+            second: 'numeric', 
+            hour12: true, 
+            timeZone: 'Asia/Kolkata'};
+            const formattedDate = date.toLocaleDateString("en-IN", options);
+
+            noteDate.textContent = formattedDate;
+            
+            
+            display.appendChild(newNoteContainer);
+            newNoteContainer.appendChild(newNote);
+            newNoteContainer.appendChild(noteDate);
+            newNoteContainer.appendChild(noteDelete);
+            noteInput.value = "";
+            } 
+        });
+        
+
+
+      
+    </script>
+</body>
+
+</html>

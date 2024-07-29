@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body{
+    font-family: "Poppins";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: rgb(196,192,255);
+background: linear-gradient(90deg, rgba(196,192,255,1) 42%, rgba(182,234,246,1) 96%); 
+}
+
+
+section{
+    padding: 20px;
+    margin: 30px;
+}
+
+section .header{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    background-color: aliceblue;
+    padding: 10px;
+    border-radius: 10px;
+    min-width: 230px;
+}
+
+
+section .header .title{
+font-weight: 500;
+}
+
+section .createNotes{
+    margin: 20px 0;
+}
+
+section .createNotes #note{
+    font-family: "poppins";
+    min-width: 300px;
+    max-width: 4000px;
+    height: 150px;
+    border-radius: 10px;
+    padding: 10px;
+    border: 0;
+}
+
+
+section .createNotes #createNote{
+    margin: 10px 0px;
+    padding: 12px;
+    background-color: aliceblue;
+    border: 0px;
+    box-shadow: 1px 2px 5px rgb(143, 143, 143);
+    border-radius: 10px;
+    font-family: "poppins";
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+section .createNotes #createNote:hover{
+    box-shadow: none;
+    transition: 0.3s;
+}
+
+section #displayContainer{
+    margin: 20px 0;
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+section #displayContainer .note{
+    
+}
+
+section .notesHistory{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    gap: 10px;
+}
+
+
+section .displayContainer{
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    gap: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+section #displayContainer .newNoteContainer{
+    background-color: aliceblue;
+    padding: 15px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+    gap: 15px;
+}
+
+.note{
+    grid-column-start: 1;
+    grid-column-end: 3;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    font-size: 14px;
+}
+
+.noteDate{
+    font-size: 14px;
+    background-color: rgb(234, 234, 234);
+    border-radius: 5px;
+    max-width: fit-content;
+    padding: 5px;
+}
+
+#noteDelete{
+    font-size: 24px;
+    background-color: rgb(234, 234, 234);
+    border-radius: 5px;
+    padding: 5px;
+    max-width: fit-content;
+    justify-self: right;
+    cursor: pointer;
+}
