@@ -42,7 +42,6 @@ async function checkWeather(city){
   
   const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
   var data = await response.json();
-  console.log(data);
   document.getElementById("cityname").innerHTML = data.name;
   document.getElementById("speed").innerHTML = data.wind.speed + "Km/Hr"+"<br>"+"Wind Speed";
   document.getElementById("humidity").innerHTML = data.main.humidity +"<br>"+"Humidity";

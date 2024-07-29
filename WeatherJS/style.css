@@ -119,7 +119,7 @@ body{
 }
 
 
-#recentSearches{
+#recentSearch{
     display: flex;
     justify-self: start;
     align-items: center;
@@ -130,7 +130,7 @@ body{
     
 }
 
-#recentSearches span{
+#recentSearch span{
   background-color: aliceblue;
   padding: 2px 12px;
   border-radius: 5px;
