@@ -19,7 +19,7 @@
             <span class="title">Notes Taking for Reminders</span>
         </div>
         <div class="createNotes">
-            <textarea id="note" placeholder="Take Notes Here...."></textarea>
+            <textarea id="noteInput" placeholder="Take Notes Here...."></textarea>
             <br>
             <button id="createNote">Create Note +</button>
         </div>
@@ -31,75 +31,115 @@
                 Your Notes
             </Span>
         </div>
-        
+
         <div id="displayContainer">
 
         </div>
     </section>
+
     <script>
-        const noteInput = document.getElementById("note");
-        const createBtn = document.getElementById("createNote");
+
+
+        const noteInput = document.getElementById("noteInput");
+        const submit = document.getElementById("createNote");
         const display = document.getElementById("displayContainer");
 
+        submit.addEventListener("click", () => {
 
-        createBtn.addEventListener("click", () => {
-            if(noteInput.value==""){
-                alert("Write Something first");
-            }
-            else{
             const newNoteContainer = document.createElement("div");
             newNoteContainer.className = "newNoteContainer";
-            newNoteContainer.addEventListener("click",function(e){
-                if(e.target.textContent === "delete"){
-                const conf = confirm("Do you want to delete");
-                if(conf){
-                    e.target.parentElement.remove();
-                    updateStorage();
-                }
-                else{
 
-                }
-                }
-            })
-
-            const newNote = document.createElement("span");
-            newNote.className = "note";
+            const newNote = document.createElement("note");
+            newNote.className = "newNote";
             newNote.textContent = noteInput.value;
-            newNote.setAttribute("contenteditable","true")
 
-            const noteDelete = document.createElement("span");
-            noteDelete.textContent = "delete"
-            noteDelete.setAttribute("class","material-symbols-outlined");
-            noteDelete.setAttribute("id","noteDelete");
-
-            const noteDate = document.createElement("span");
+            const noteDate = document.createElement("noteDate");
             noteDate.className = "noteDate";
-            const date = new Date();
-            const options = {  year: 'numeric', 
-            month: 'short', 
-            day: 'numeric', 
-            hour: 'numeric', 
-            minute: 'numeric', 
-            second: 'numeric', 
-            hour12: true, 
-            timeZone: 'Asia/Kolkata'};
-            const formattedDate = date.toLocaleDateString("en-IN", options);
+            const d = new Date();
+            const options = {
+                year: "numeric", month: "short", date: "numeric",
+                hour: "numeric", minute: "numeric", second: "numeric",
+                hour12: true, timeZone: "Asia/kolkata"
+            };
+            noteDate.className = "noteDate";
+            noteDate.textContent = d.toLocaleDateString("en-IN", options);
 
-            noteDate.textContent = formattedDate;
-            
-            
+
+            const noteDelete = document.createElement("noteDelete");
+            noteDelete.setAttribute("id", "noteDelete");
+            noteDelete.textContent = "delete";
+            noteDelete.setAttribute("class", "material-symbols-outlined");
+
+
+
             display.appendChild(newNoteContainer);
             newNoteContainer.appendChild(newNote);
             newNoteContainer.appendChild(noteDate);
             newNoteContainer.appendChild(noteDelete);
             noteInput.value = "";
-            } 
-        });
-        
+            updateNotes();
+        })
 
 
-      
+        function updateNotes() {
+            const list = [];
+            const newNoteContainers = display.querySelectorAll(".newNoteContainer");
+            newNoteContainers.forEach(container => {
+                const noteStorage = container.querySelector(".newNote").textContent;
+                const dateStorage = container.querySelector(".noteDate").textContent;
+                list.push({ content: noteStorage, date: dateStorage });
+            })
+            localStorage.setItem("noteslist", JSON.stringify(list));
+        }
+
+        function showNotes() {
+            const showData = JSON.parse(localStorage.getItem("noteslist")) || [];
+            display.innerHTML = "";
+            showData.forEach(note => {
+                displayNote(note.content, note.date);
+            })
+        }
+
+        function displayNote(content, date) {
+            const newNoteContainer = document.createElement("div");
+            newNoteContainer.className = "newNoteContainer";
+            newNoteContainer.addEventListener("click", function (e) {
+                if (e.target.textContent === "delete") {
+                    const conf = confirm("Do you want to delete");
+                    if (conf) {
+                        e.target.parentElement.remove();
+                        updateNotes();
+                    }
+                }
+            });
+            const newNote = document.createElement("note");
+            newNote.className = "newNote";
+            newNote.textContent = content;
+
+            const noteDate = document.createElement("noteDate");
+            noteDate.className = "noteDate";
+            noteDate.textContent = date;
+
+
+            const noteDelete = document.createElement("noteDelete");
+            noteDelete.setAttribute("id", "noteDelete");
+            noteDelete.textContent = "delete";
+            noteDelete.setAttribute("class", "material-symbols-outlined");
+
+
+
+            display.appendChild(newNoteContainer);
+            newNoteContainer.appendChild(newNote);
+            newNoteContainer.appendChild(noteDate);
+            newNoteContainer.appendChild(noteDelete);
+        }
+
+        // Load notes from local storage when the page loads
+        window.addEventListener("load", showNotes);
+
+
     </script>
+
 </body>
 
 </html>

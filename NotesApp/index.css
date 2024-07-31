@@ -36,7 +36,7 @@ section .createNotes{
     margin: 20px 0;
 }
 
-section .createNotes #note{
+section .createNotes #noteInput{
     font-family: "poppins";
     min-width: 300px;
     max-width: 4000px;
@@ -70,10 +70,8 @@ section #displayContainer{
     justify-content: start;
     align-items: flex-start;
     gap: 10px;
-}
-
-section #displayContainer .note{
-    
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 section .notesHistory{
@@ -85,16 +83,6 @@ section .notesHistory{
     gap: 10px;
 }
 
-
-section .displayContainer{
-    display: flex;
-    justify-content: start;
-    align-items: start;
-    gap: 10px;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
 section #displayContainer .newNoteContainer{
     background-color: aliceblue;
     padding: 15px;
@@ -102,12 +90,12 @@ section #displayContainer .newNoteContainer{
     display: grid;
     grid-template-columns: auto auto;
     align-items: center;
-    width: 100%;
+    min-width: 100px;
     max-width: 300px;
     gap: 15px;
 }
 
-.note{
+.newNote{
     grid-column-start: 1;
     grid-column-end: 3;
     overflow: hidden;
