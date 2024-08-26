@@ -9,10 +9,20 @@ body{
 background: linear-gradient(90deg, rgba(196,192,255,1) 42%, rgba(182,234,246,1) 96%); 
 }
 
+@media screen and (max-width: 600px) {
+    section {
+        padding: 10px;
+        margin: 10px;
+    }
+}
+
+
+@media screen and (min-width: 600px) {
 
 section{
     padding: 20px;
     margin: 30px;
+}
 }
 
 section .header{
@@ -70,9 +80,15 @@ section #displayContainer{
     justify-content: start;
     align-items: flex-start;
     gap: 10px;
-    flex-direction: row;
+    flex-direction: column-reverse;
     flex-wrap: wrap;
 }
+
+section .notesHistory div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    }
 
 section .notesHistory{
     display: flex;
@@ -81,6 +97,15 @@ section .notesHistory{
     background-color: aliceblue;
     border-radius: 10px;
     gap: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+section .notesHistory #deleteAll{
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 section #displayContainer .newNoteContainer{
@@ -90,8 +115,7 @@ section #displayContainer .newNoteContainer{
     display: grid;
     grid-template-columns: auto auto;
     align-items: center;
-    min-width: 100px;
-    max-width: 300px;
+    width: 98%;
     gap: 15px;
 }
 

@@ -12,8 +12,7 @@ body{
     align-content: center;
     font-family: "Poppins";
     background-image: url(weather.jpeg);
-    background-position: center;
-
+    background-position: center;background-size: cover;
 }
 
 

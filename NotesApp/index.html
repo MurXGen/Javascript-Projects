@@ -11,6 +11,7 @@
 </head>
 
 <body>
+
     <section>
         <div class="header">
             <span id="search_btn" class="material-symbols-outlined">
@@ -24,12 +25,23 @@
             <button id="createNote">Create Note +</button>
         </div>
         <div class="notesHistory">
-            <span id="search_btn" class="material-symbols-outlined">
-                history
-            </span>
-            <Span class="noteTitle">
-                Your Notes
-            </Span>
+            <div>
+                <span id="search_btn" class="material-symbols-outlined">
+                    history
+                </span>
+                <Span class="noteTitle">
+                    Your Notes
+                </Span>
+            </div>
+            <div style="background-color: rgb(50, 50, 50); color:whitesmoke ;padding: 5px 10px;border-radius: 5px;border: 1px solid grey;"
+                id="deleteAll">
+                <span>Delete All</span>
+                <span id="search_btn" class="material-symbols-outlined">
+                    delete
+                </span>
+            </div>
+
+
         </div>
 
         <div id="displayContainer">
@@ -40,45 +52,87 @@
     <script>
 
 
+
+
         const noteInput = document.getElementById("noteInput");
         const submit = document.getElementById("createNote");
         const display = document.getElementById("displayContainer");
 
         submit.addEventListener("click", () => {
 
-            const newNoteContainer = document.createElement("div");
-            newNoteContainer.className = "newNoteContainer";
+            const audio = new Audio('./button2.mp3');
+            audio.play();
+            audio.playbackRate = 5.0;
 
-            const newNote = document.createElement("note");
-            newNote.className = "newNote";
-            newNote.textContent = noteInput.value;
+            if (noteInput.value != "") {
 
-            const noteDate = document.createElement("noteDate");
-            noteDate.className = "noteDate";
-            const d = new Date();
-            const options = {
-                year: "numeric", month: "short", date: "numeric",
-                hour: "numeric", minute: "numeric", second: "numeric",
-                hour12: true, timeZone: "Asia/kolkata"
-            };
-            noteDate.className = "noteDate";
-            noteDate.textContent = d.toLocaleDateString("en-IN", options);
+                const newNoteContainer = document.createElement("div");
+                newNoteContainer.className = "newNoteContainer";
+                newNoteContainer.addEventListener("click", function (e) {
+                if (e.target.textContent === "delete") {
+                    const conf = confirm("Do you want to delete");
+                    if (conf) {
+                        e.target.parentElement.remove();
+                        updateNotes();
+                    }
+                }
+            });
+
+                const newNote = document.createElement("note");
+                newNote.className = "newNote";
+                newNote.textContent = noteInput.value;
+
+                const noteDate = document.createElement("noteDate");
+                noteDate.className = "noteDate";
+                const d = new Date();
+                const options = {
+                    year: "numeric", month: "short", day: "numeric",
+                    hour: "numeric", minute: "numeric", second: "numeric",
+                    hour12: true, timeZone: "Asia/kolkata"
+                };
+                noteDate.className = "noteDate";
+                noteDate.textContent = d.toLocaleDateString("en-IN", options);
 
 
-            const noteDelete = document.createElement("noteDelete");
-            noteDelete.setAttribute("id", "noteDelete");
-            noteDelete.textContent = "delete";
-            noteDelete.setAttribute("class", "material-symbols-outlined");
+                const noteDelete = document.createElement("noteDelete");
+                noteDelete.setAttribute("id", "noteDelete");
+                noteDelete.textContent = "delete";
+                noteDelete.setAttribute("class", "material-symbols-outlined");
 
 
 
-            display.appendChild(newNoteContainer);
-            newNoteContainer.appendChild(newNote);
-            newNoteContainer.appendChild(noteDate);
-            newNoteContainer.appendChild(noteDelete);
-            noteInput.value = "";
-            updateNotes();
+                display.appendChild(newNoteContainer);
+                newNoteContainer.appendChild(newNote);
+                newNoteContainer.appendChild(noteDate);
+                newNoteContainer.appendChild(noteDelete);
+                noteInput.value = "";
+                updateNotes();
+
+
+
+            }
+            else {
+                alert("Enter atleast 3 characters")
+            }
         })
+
+        const deleteAll = document.getElementById("deleteAll");
+        deleteAll.addEventListener("click", () => {
+
+            const audio = new Audio('./delete.mp3');
+            audio.play();
+            audio.playbackRate = 2.0;
+
+            display.innerHTML = "";
+            updateNotes();
+
+
+        })
+
+
+
+
+
 
 
         function updateNotes() {

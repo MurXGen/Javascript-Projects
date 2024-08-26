@@ -1,0 +1,78 @@
+body{
+    font-family: "poppins";
+    margin: 0;
+    padding: 0;
+    background-color: rgb(255, 255, 255);
+}
+
+.box{
+    display: grid;
+    grid-template-columns: auto;
+    padding: 50px 40px;
+    gap: 30px;
+}
+
+.box h2{
+    font-size: 46px;
+    border-bottom: 1px solid ;
+    max-width: 500px;
+    padding-bottom: 20px;
+    margin: 0;
+}
+
+.box .show{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    background-color: aliceblue;
+    max-width: fit-content;
+    padding: 8px;
+    border-radius: 8px;
+    
+}
+
+.box .show input{
+    font-size: 24px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 0;
+    outline: 0;
+}
+
+.box .show span{
+    cursor: pointer;
+}
+
+.box .generate{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background-color: aliceblue;
+    max-width: fit-content;
+    border-radius: 8px;
+    cursor: pointer;
+    transition-duration: 0.3s;
+    box-shadow: 1px 1px 5px rgb(188, 188, 188);
+}
+
+.box .generate span{
+    padding: 0 10px;
+}
+
+
+.box .generate button{
+    font-size: 20px;
+    border: 0;
+    outline: 0;
+    background-color: aliceblue;
+    cursor: pointer;
+    padding: 15px 10px;
+}
+
+.box .generate:hover{
+    transform: translateY(-10px);
+    transition: 0.3s;
+
+}
+
